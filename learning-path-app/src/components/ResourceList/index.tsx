@@ -2,6 +2,7 @@ type Resource = {
   title: string;
   type: "video" | "article" | "course" | "exercise";
   url: string;
+  recommended?: boolean;
 };
 
 const resources: Resource[] = [
@@ -14,6 +15,7 @@ const resources: Resource[] = [
     title: "Official Python Tutorial",
     type: "article",
     url: "https://docs.python.org/3/tutorial/",
+    recommended: true,
   },
   {
     title: "Kaggle - Intro to Programming",
@@ -24,6 +26,7 @@ const resources: Resource[] = [
     title: "HackerRank - Python (Basic) Certificate",
     type: "exercise",
     url: "https://www.hackerrank.com/skills-verification/python_basic",
+    recommended: true,
   },
 ];
 
@@ -34,7 +37,14 @@ export default function ResourceList() {
       <ul>
         {resources.map((resource, index) => (
           <li key={index} className="mb-4 bg-white shadow-md rounded p-4">
-            <h3 className="text-xl font-bold">{resource.title}</h3>
+            <div className="flex justify-between items-center">
+              <h3 className="text-xl font-bold">{resource.title}</h3>
+              {resource.recommended && (
+                <span className="bg-green-200 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">
+                  Recommended
+                </span>
+              )}
+            </div>
             <p className="text-gray-600 capitalize">{resource.type}</p>
             <a href={resource.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
               Go to resource

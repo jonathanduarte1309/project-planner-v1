@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import LearningStyleSelector from "@/components/LearningStyleSelector";
 
 export default function GoalDefinition() {
   const [goal, setGoal] = useState("");
@@ -43,6 +44,7 @@ export default function GoalDefinition() {
             <option value="advanced">Advanced</option>
           </select>
         </div>
+        <LearningStyleSelector />
         <div className="flex items-center justify-between">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
